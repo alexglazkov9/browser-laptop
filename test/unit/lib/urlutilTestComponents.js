@@ -160,6 +160,15 @@ module.exports = {
     },
     'calls prependScheme': (test) => {
       test.equal(urlUtil().getUrlFromInput('/file/path/to/file'), 'file:///file/path/to/file')
+    },
+    'calls url with spaces': (test) => {
+      test.equal(urlUtil().getUrlFromInput('https://www.google.ca/search?q=dog cat'), 'https://www.google.ca/search?q=dog%20cat')
+    },
+    'calls url with leading and trailing whitespaces': (test) => {
+      test.equal(urlUtil().getUrlFromInput(' https://www.google.ca/search?q=dog cat '), 'https://www.google.ca/search?q=dog%20cat')
+    },
+    'has spaces': (test) => {
+      test.equal(urlUtil().getUrlFromInput('/users/humphd/repos/browser-laptop/dog cat.txt'), 'file:///users/humphd/repos/browser-laptop/dog%20cat.txt')
     }
   },
 

@@ -150,7 +150,7 @@ const UrlUtil = {
       return ''
     }
 
-    input = input.trim()
+    input = input.trim().replace(/\s/, '%20')
 
     input = UrlUtil.prependScheme(input)
 
@@ -430,6 +430,7 @@ const UrlUtil = {
    * @return {boolean}
    */
   isFileScheme: function (url) {
+    url = url.replace(/\s/, '%20')
     return this.getScheme(url) === fileScheme
   },
 
